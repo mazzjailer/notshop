@@ -5,12 +5,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import AddToFavouritesButton from './addToFavouritesButton'
 
-const HomePageCards = (props) => {
+const ProductCards = (props) => {
   const router = useRouter();
 
   return (
     <>
-      {props.products.slice(0, 7).map((product) => (
+      {props.products.map((product) => (
         <div key={product.id} className='flex flex-col items-center justify-center w-full h-full' onClick={() => router.push(`/products/${product.slug}`)}>
           <Card className='w-full h-full rounded-3xl relative cursor-pointer'>
             <CardHeader className='relative'>
@@ -32,4 +32,4 @@ const HomePageCards = (props) => {
   )
 }
 
-export default HomePageCards
+export default ProductCards

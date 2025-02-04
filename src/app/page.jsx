@@ -14,7 +14,7 @@ import AddToFavouritesButton from './addToFavouritesButton';
 import Link from 'next/link'
 import { PrismaClient } from '@prisma/client'
 import { redirect } from 'next/dist/server/api-utils'
-import HomePageCards from './homePageCards.jsx'
+import ProductCards from './productCards.jsx'
 
 
 const Home = async () => {
@@ -30,7 +30,7 @@ const Home = async () => {
             <h1 className='text-5xl font-bold'>Latest</h1>
         </div>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 w-full'>
-          <HomePageCards products={products} />
+          <ProductCards products={products.slice(0, 7)} />
           <div className='flex items-center justify-center col-span-1 md:col-span-2 lg:col-span-1'>
             <Link href='/products'>
               <Button className='text-wrap text-md lg:text-xl font-bold text-white p-6 hover:bg-opacity-90 rounded-full border-[#5A3D25] border'>Explore more...</Button>
