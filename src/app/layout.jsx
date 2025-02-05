@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header.jsx";
+import CartContext from "../contexts/cartContext.jsx";
 
 const roboto = Inter({
   weight: ["400", "500", "700", "800", "900"],
@@ -19,10 +20,11 @@ export default function RootLayout({ children }) {
       <body
         className={roboto.className}
       >
+        <CartContext>
         <div className="flex flex-row justify-center w-full">
           <Header />
         </div>
-        {children}
+        {children}</CartContext>
       </body>
     </html>
   );
