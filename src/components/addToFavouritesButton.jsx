@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { useState } from 'react';
-import { Button } from "../components/ui/button";
+import { Button } from "./ui/button";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 

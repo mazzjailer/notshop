@@ -3,9 +3,12 @@ import React from 'react'
 import Image from 'next/image'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Card, CardContent, CardDescription, CardTitle, CardHeader } from '@/components/ui/card'
-import AddToFavouritesButton from './addToFavouritesButton'
+import AddToFavouritesButton from '../../../components/addToFavouritesButton'
+import { useRouter } from 'next/navigation'
 
 const ProductPageCarousel = (props) => {
+  const router = useRouter();
+
   return (
     <Carousel
           opts={{
