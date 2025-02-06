@@ -4,13 +4,36 @@ import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/com
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import AddToFavouritesButton from './addToFavouritesButton'
+import { useSearchParams } from 'next/navigation'
+import { sort } from 'fast-sort'
 
 const ProductCards = (props) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  let products = props.products;
+  
+  if (searchParams.get('sort') === 'lowest') {
+    products = sort(products).asc(product => product.price)
+    if (searchParams.get('category')) {
+      products = products.filter((item) => item.category === searchParams.get('category'))
+    }
+  }
+  else if (searchParams.get('sort') === 'highest') {
+    products = sort(products).desc(product => product.price)
+    if (searchParams.get('category')) {
+      products = products.filter((item) => item.category === searchParams.get('category'))
+    }
+  }
+  else if (searchParams.get('sort') === 'newest') {
+    products = sort(products).asc(product => product.createdAt)
+    if (searchParams.get('category')) {
+      products = products.filter((item) => item.category === searchParams.get('category'))
+    }
+  }
 
   return (
     <>
-      {props.products.map((product) => (
+      {products.map((product) => (
         <div key={product.id} className='flex flex-col items-center justify-center w-full h-full' onClick={() => router.push(`/products/${product.slug}`)}>
           <Card className='w-full h-full rounded-3xl relative cursor-pointer'>
             <CardHeader className='relative'>
