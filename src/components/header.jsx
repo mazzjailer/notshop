@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import ShoppingBag from './shoppingBag'
+import ShoppingBag from './shoppingCart'
 import FavouritesPageIcon from './favouritesPageIcon'
 import SearchPageIcon from './searchPageIcon'
 import Link from 'next/link'
