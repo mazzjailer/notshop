@@ -14,7 +14,7 @@ const ProductPageCarousel = (props) => {
           opts={{
             align: "start",
           }}
-          className="w-full max-w-[19rem] lg:max-w-6xl md:max-w-xl p-2"
+          className="w-full max-w-[19rem] lg:max-w-6xl md:max-w-xl"
         >
           <CarouselContent className='p-1'>
             {props.products.slice(0, 8).map((product) => (
@@ -23,8 +23,8 @@ const ProductPageCarousel = (props) => {
                   <Card className='w-full h-full rounded-3xl relative cursor-pointer'>
                     <CardHeader className='relative p-4 md:p-6'>
                       <Image src={product.images[0]} width={1000} height={1000} alt="hero" className='w-full h-full object-cover rounded-md aspect-square' />
-                      <div className='absolute top-6 right-7'>
-                        <AddToFavouritesButton />
+                      <div className='absolute top-6 right-7' onClick={(e) => e.stopPropagation()}>
+                        <AddToFavouritesButton product={product} />
                       </div>
                     </CardHeader>
                     <CardContent className='grid grid-cols-1 text-center p-4 pt-0'>

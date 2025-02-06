@@ -15,8 +15,8 @@ const ProductCards = (props) => {
           <Card className='w-full h-full rounded-3xl relative cursor-pointer'>
             <CardHeader className='relative'>
               <Image src={product.images[0]} width={1000} height={1000} alt="hero" className='w-full h-full object-cover rounded-md aspect-square' />
-              <div className='absolute top-6 right-7'>
-                <AddToFavouritesButton />
+              <div className='absolute top-6 right-7' onClick={(e) => e.stopPropagation()}>
+                <AddToFavouritesButton product={product} />
               </div>
             </CardHeader>
             <CardContent className='grid grid-cols-1 text-center'>

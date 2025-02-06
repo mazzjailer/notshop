@@ -10,8 +10,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { PrismaClient } from '@prisma/client'
-import AddToFavouritesButton from '@/app/addToFavouritesButton'
-import ProductPageCarousel from '@/app/productPageCarousel'
+import AddToFavouritesButton from '@/components/addToFavouritesButton'
+import ProductPageCarousel from '@/app/products/[slug]/productPageCarousel'
 
 const IndProductsPage = async ( {params} ) => {
   const {slug} = await params;
@@ -24,18 +24,18 @@ const IndProductsPage = async ( {params} ) => {
   });
 
   return (
-    <div className='py-6 md:py-9 px-4 md:px-12'>
+    <div className='py-6 px-4 pb-0'>
       <div className='flex flex-col md:flex-row pt-20 pb-6 md:pt-23 md:pb-8 items-center'>
         <Image src={product.images[0]} width={500} height={500} sizes="(max-width: 768px) 50vw, 50vw" className='aspect-square object-cover rounded-3xl mb-4' />
         <div className='flex flex-col md:pl-12 w-full'>
           <h1 className='text-3xl md:text-6xl font-bold pb-1 md:pb-3'>{product.name}</h1>
           <h2 className='text-3xl md:text-6xl pb-4 md:pb-6'>${product.price.toString()}</h2>
           <div className='flex flex-row'>
-            <div className='p-1 w-full'>
-              <AddToCartButton />
-            </div>
             <div className='p-1'>
-              <AddToFavouritesButton />
+              <AddToFavouritesButton product={product} />
+            </div>
+            <div className='p-1 w-full'>
+              <AddToCartButton product={product} />
             </div>
           </div>
           <div className='flex flex-row pb-3 pt-4 md:pt-6'>
