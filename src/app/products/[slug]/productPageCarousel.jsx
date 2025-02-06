@@ -8,6 +8,13 @@ import { useRouter } from 'next/navigation'
 
 const ProductPageCarousel = (props) => {
   const router = useRouter();
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   return (
     <Carousel
@@ -17,7 +24,7 @@ const ProductPageCarousel = (props) => {
           className="w-full max-w-[19rem] lg:max-w-6xl md:max-w-xl"
         >
           <CarouselContent className='p-1'>
-            {props.products.slice(0, 8).map((product) => (
+            {shuffleArray(props.products).map((product) => (
               <CarouselItem key={product.id} className="basis-1/2 md:basis-1/2 lg:basis-1/5">
                 <div key={product.id} className='flex flex-col items-center justify-center w-full h-full' onClick={() => router.push(`/products/${product.slug}`)}>
                   <Card className='w-full h-full rounded-3xl relative cursor-pointer'>
