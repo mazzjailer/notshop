@@ -30,6 +30,9 @@ const ProductCards = (props) => {
       products = products.filter((item) => item.category === searchParams.get('category'))
     }
   }
+  else if (searchParams.get('category')) {
+    products = products.filter((item) => item.category === searchParams.get('category'))
+  }
 
   return (
     <>

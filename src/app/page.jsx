@@ -44,7 +44,7 @@ const Home = async () => {
             <h1 className='text-3xl md:text-5xl font-bold'>Shop by categories</h1>
           </div>
           <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full'>
-            <div className='flex flex-col items-center justify-center w-full h-full'>
+            <Link href='/products?category=clutches' className='flex flex-col items-center justify-center w-full h-full'>
               <Card className='w-full h-full rounded-3xl relative border-none'>
                 <CardHeader className='relative w-full h-full p-0'>
                   <Image 
@@ -61,8 +61,8 @@ const Home = async () => {
                   </div>
                 </CardHeader>
               </Card>
-            </div>
-            <div className='flex flex-col items-center justify-center w-full h-full'>
+            </Link>
+            <Link href='/products?category=shoulderbags' className='flex flex-col items-center justify-center w-full h-full'>
               <Card className='w-full h-full rounded-3xl relative border-none'>
                 <CardHeader className='relative w-full h-full p-0'>
                   <Image 
@@ -79,8 +79,8 @@ const Home = async () => {
                   </div>
                 </CardHeader>
               </Card>
-            </div>
-            <div className='flex flex-col items-center justify-center w-full h-full'>
+            </Link>
+            <Link href='/products?category=crossbodybags' className='flex flex-col items-center justify-center w-full h-full'>
               <Card className='w-full h-full rounded-3xl relative border-none'>
                 <CardHeader className='relative w-full h-full p-0'>
                   <Image 
@@ -97,8 +97,8 @@ const Home = async () => {
                   </div>
                 </CardHeader>
               </Card>
-            </div>
-            <div className='flex flex-col items-center justify-center w-full h-full'>
+            </Link>
+            <Link href='/products?category=totebags' className='flex flex-col items-center justify-center w-full h-full'>
               <Card className='w-full h-full rounded-3xl relative border-none'>
                 <CardHeader className='relative w-full h-full p-0'>
                   <Image 
@@ -115,7 +115,7 @@ const Home = async () => {
                   </div>
                 </CardHeader>
               </Card>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
