@@ -5,7 +5,7 @@ import { FaHeart } from 'react-icons/fa6'
 const Footer = () => {
   return (
       <div className='flex flex-row justify-center items-center w-full h-20 md:h-32 text-[#5A3D25] font-bold text-md md:text-lg'>
-      Made with&nbsp;<FaHeart className='text-red-500 mx-1' />&nbsp;by&nbsp;<Link href='https://github.com/mazzjailer'>Maziyar Amini</Link>
+      Made with&nbsp;<FaHeart className='text-red-500 mx-1' />&nbsp;by&nbsp;<Link className='hover:underline' href='https://github.com/mazzjailer'>Maziyar Amini</Link>
     </div>
   )
 }
