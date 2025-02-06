@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 const ProductsFilter = () => {
@@ -19,7 +20,7 @@ const ProductsFilter = () => {
     else {
       router.push(`?sort=${value}`);
     }
-  };
+  }
   const handleCategoryChange = (value) => {
     if (searchParams.get('sort')) {
     router.push(`?category=${value}&sort=${searchParams.get('sort')}`);
@@ -27,12 +28,15 @@ const ProductsFilter = () => {
     else {
       router.push(`?category=${value}`);
     }
-  };
+  }
+  const handleReset = () => {
+    router.push('/products');
+  }
 
   return (
       <div className='flex flex-row pt-2'>
         <Select onValueChange={handleSortChange}>
-          <SelectTrigger className="w-fit bg-white rounded-xl m-1">
+          <SelectTrigger className="w-fit bg-white rounded-xl m-1 ml-0">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
           <SelectContent>
@@ -52,6 +56,7 @@ const ProductsFilter = () => {
             <SelectItem value="shoulderbags">Shoulder bags</SelectItem>
           </SelectContent>
         </Select>
+        <Button className="bg-white rounded-xl m-1 hover:bg-white text-black font-light border border-input" onClick={handleReset}>Clear</Button>
     </div>
   )
 }
