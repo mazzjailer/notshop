@@ -10,7 +10,6 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
-import Link from 'next/link'
 import { FaBars, FaChevronDown } from 'react-icons/fa6'
 
 
@@ -26,21 +25,11 @@ const ProductsPageIcon = () => {
             <FaChevronDown className='md:ml-1 md:pt-1 text-xl md:text-xs stroke-[30px]' />
             </NavigationMenuTrigger>
             <NavigationMenuContent className='flex flex-col p-4 text-md md:text-lg font-normal'>
-              <NavigationMenuLink className='w-[150px] py-1 hover:underline'>
-                  <Link href='/products'>All Categories</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink className='w-[150px] py-1 hover:underline'>
-                  <Link href='/products?category=clutches'>Clutches</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink className='w-[150px] py-1 hover:underline'>
-                  <Link href='/products?category=shoulderbags'>Shoulder Bags</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink className='w-[150px] py-1 hover:underline'>
-                  <Link href='/products?category=crossbodybags'>Crossbody Bags</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink className='w-[150px] py-1 hover:underline'>
-                  <Link href='/products?category=totebags'>Tote Bags</Link>
-              </NavigationMenuLink>
+              <NavigationMenuLink href='/products' className='w-[150px] py-1 hover:underline'>All Categories</NavigationMenuLink>
+              <NavigationMenuLink href='/products?category=clutches' className='w-[150px] py-1 hover:underline'>Clutches</NavigationMenuLink>
+              <NavigationMenuLink href='/products?category=shoulderbags' className='w-[150px] py-1 hover:underline'>Shoulder Bags</NavigationMenuLink>
+              <NavigationMenuLink href='/products?category=crossbodybags' className='w-[150px] py-1 hover:underline'>Crossbody Bags</NavigationMenuLink>
+              <NavigationMenuLink href='/products?category=totebags' className='w-[150px] py-1 hover:underline'>Tote Bags</NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
