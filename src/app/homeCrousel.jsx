@@ -17,21 +17,19 @@ const HomeCrousel = () => {
 
   return (
       <Carousel plugins={[plugin.current]}
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
       className="w-full h-[80vh]">
         <CarouselContent>
           <CarouselItem>
-            <Image src="/images/1.jpg" width={500} height={500} alt="Picture of the author" className="object-cover w-full h-[80vh]"/>
+            <Image src="/images/1.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]"/>
           </CarouselItem>
           <CarouselItem className=" relative">
-            <Image src="/images/2.jpg" width={500} height={500} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
+            <Image src="/images/20.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
           <CarouselItem className=" relative">
-            <Image src="/images/3.jpg" width={500} height={500} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
+            <Image src="/images/16.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
           <CarouselItem className=" relative">
-            <Image src="/images/4.jpg" width={500} height={500} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
+            <Image src="/images/8.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious className="z-10 absolute left-6 bg-transparent border-none shadow-none hover:bg-[#FFEAC5]" />
