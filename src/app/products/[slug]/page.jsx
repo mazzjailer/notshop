@@ -5,10 +5,9 @@ import { PrismaClient } from '@prisma/client'
 import AddToFavouritesButton from '@/components/addToFavouritesButton'
 import ProductPageCarousel from '@/app/products/[slug]/productPageCarousel'
 
-const IndProductsPage = async ( {params} ) => {
-  const {slug} = await params;
+const IndProductsPage = async ( { params } ) => {
+  const { slug } = await params;
   const prisma = new PrismaClient();
-  const products = await prisma.product.findMany();
   const product = await prisma.product.findUnique({
     where: {
       slug: slug,
@@ -42,7 +41,7 @@ const IndProductsPage = async ( {params} ) => {
         <h3 className='text-xl md:text-3xl border-b-2 border-black'>Other products</h3>
       </div>
       <div className='flex flex-row justify-center items-center'>
-        <ProductPageCarousel products={products} />
+        <ProductPageCarousel />
       </div>
     </div>
   )
