@@ -25,7 +25,7 @@ const ProductCards = (props) => {
     }
   }
   else if (searchParams.get('sort') === 'newest') {
-    products = sort(products).asc(product => product.createdAt)
+    products = sort(products).desc(product => product.createdAt)
     if (searchParams.get('category')) {
       products = products.filter((item) => item.category === searchParams.get('category'))
     }
