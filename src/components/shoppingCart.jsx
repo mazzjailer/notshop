@@ -3,9 +3,7 @@ import { FaBagShopping } from "react-icons/fa6"
 import { Button } from "./ui/button"
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,

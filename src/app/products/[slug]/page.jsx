@@ -1,14 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import AddToCartButton from '../../../components/addToCartButton'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import { PrismaClient } from '@prisma/client'
 import AddToFavouritesButton from '@/components/addToFavouritesButton'
 import ProductPageCarousel from '@/app/products/[slug]/productPageCarousel'

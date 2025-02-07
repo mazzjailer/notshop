@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import { FaRegHeart } from 'react-icons/fa'
 import { FaHeart } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 

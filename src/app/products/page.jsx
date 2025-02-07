@@ -1,16 +1,6 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
 import { PrismaClient } from '@prisma/client'
 import ProductCards from '../../components/productCards'
-import { FilterIcon } from 'lucide-react'
 import ProductsFilter from './productsFilter'
 
 const productsPage = async () => {
