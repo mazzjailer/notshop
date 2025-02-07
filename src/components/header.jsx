@@ -2,7 +2,7 @@
 import React from 'react'
 import ShoppingBag from './shoppingCart'
 import FavouritesPageIcon from './favouritesPageIcon'
-import SearchPageIcon from './searchPageIcon'
+import SearchComponent from './searchComponent'
 import ProductsPageIcon from './productsPageIcon'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -27,7 +27,7 @@ const Header = () => {
           <ProductsPageIcon />
         </div>
         <div className='flex flex-row items-center w-5/12 md:w-4/12 lg:w-3/12 justify-between'>
-          <SearchPageIcon />
+          <SearchComponent />
           <FavouritesPageIcon />
           <ShoppingBag />
         </div>
