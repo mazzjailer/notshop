@@ -9,26 +9,28 @@ import {
 } from "../components/ui/carousel"
 import Image from 'next/image'
 import { useRef } from "react"
+import { useRouter } from "next/navigation"
 
 const HomeCrousel = () => {
   const plugin = useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true })
   )
+  const router = useRouter();
 
   return (
       <Carousel plugins={[plugin.current]}
       className="w-full h-[80vh]">
         <CarouselContent>
-          <CarouselItem>
+          <CarouselItem className="relative cursor-pointer" onClick={() => router.push(`/products/astro`)}>
             <Image src="/images/1.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]"/>
           </CarouselItem>
-          <CarouselItem className=" relative">
+          <CarouselItem className="relative cursor-pointer" onClick={() => router.push(`/products/meteor`)}>
             <Image src="/images/20.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
-          <CarouselItem className=" relative">
+          <CarouselItem className="relative cursor-pointer" onClick={() => router.push(`/products/supernova`)}>
             <Image src="/images/16.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
-          <CarouselItem className=" relative">
+          <CarouselItem className="relative cursor-pointer" onClick={() => router.push(`/products/neptune`)}>
             <Image src="/images/8.jpg" width={1000} height={1000} alt="Picture of the author" className="object-cover w-full h-[80vh]" />
           </CarouselItem>
         </CarouselContent>
