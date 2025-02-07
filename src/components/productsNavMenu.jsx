@@ -3,24 +3,22 @@ import React from 'react'
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { FaBars, FaChevronDown } from 'react-icons/fa6'
+import { FaChevronDown } from 'react-icons/fa6'
 
-
-const ProductsPageIcon = () => {
+const ProductsNavMenu = () => {
 
   return (
     <div className='text-xl font-bold cursor-pointer'>
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem className='text-2xl'>
+          <NavigationMenuItem className='text-2xl rounded-2xl'>
             <NavigationMenuTrigger className='text-sm md:text-lg font-bold'>
-            <span className="hidden md:block pt-1">Categories</span>
+              <span className="hidden md:block pt-1">Categories</span>
             <FaChevronDown className='md:ml-1 md:pt-1 text-xl md:text-xs stroke-[30px]' />
             </NavigationMenuTrigger>
             <NavigationMenuContent className='flex flex-col p-4 text-md md:text-lg font-normal'>
@@ -37,4 +35,4 @@ const ProductsPageIcon = () => {
   )
 }
 
-export default ProductsPageIcon
+export default ProductsNavMenu
