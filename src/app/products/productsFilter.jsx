@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Select,
   SelectContent,
@@ -12,7 +12,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 
 const ProductsFilter = () => {
   const searchParams = useSearchParams();
+  const [categoryDefaultValue, setCategoryDefaultValue] = useState(searchParams.get('category'));
+  const [sortDefaultValue, setSortDefaultValue] = useState(searchParams.get('sort'));
   const router = useRouter();
+
   const handleSortChange = (value) => {
     if (searchParams.get('category')) {
     router.push(`?category=${searchParams.get('category')}&sort=${value}`);
@@ -21,6 +24,7 @@ const ProductsFilter = () => {
       router.push(`?sort=${value}`);
     }
   }
+
   const handleCategoryChange = (value) => {
     if (searchParams.get('sort')) {
     router.push(`?category=${value}&sort=${searchParams.get('sort')}`);
@@ -29,13 +33,14 @@ const ProductsFilter = () => {
       router.push(`?category=${value}`);
     }
   }
+  
   const handleReset = () => {
-    router.push('/products');
+    window.location.href = '/products';
   }
 
   return (
       <div className='flex flex-row pt-2'>
-        <Select onValueChange={handleSortChange}>
+        <Select onValueChange={handleSortChange} defaultValue={sortDefaultValue || undefined}>
           <SelectTrigger className="w-fit bg-white rounded-xl m-1 ml-0">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
@@ -45,7 +50,7 @@ const ProductsFilter = () => {
             <SelectItem value="newest">Newest</SelectItem>
           </SelectContent>
         </Select>
-        <Select onValueChange={handleCategoryChange}>
+        <Select onValueChange={handleCategoryChange} defaultValue={categoryDefaultValue || undefined}>
           <SelectTrigger className="w-fit bg-white rounded-xl m-1">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
