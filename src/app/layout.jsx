@@ -2,9 +2,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header.jsx";
 import Footer from "../components/footer.jsx"
-import CartContext from "../contexts/cartContext.jsx";
+import CartProvider from "../contexts/cartContext.jsx";
 import FavProvider from "../contexts/favContext.jsx";
 import ProductsData from "../contexts/productsData.jsx";
+import Session from "../contexts/session.jsx";
 
 const roboto = Inter({
   weight: ["400", "500", "700", "800", "900"],
@@ -21,19 +22,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={roboto.className}
+        className={roboto.className + " flex flex-col min-h-[100vh]"}
       >
-        <ProductsData>
-          <FavProvider>
-            <CartContext>
-              <div className="flex flex-row justify-center w-full">
-                <Header />
-              </div>
-              {children}
-              <Footer />
-            </CartContext>
-          </FavProvider>
-        </ProductsData>
+        <Session>
+          <ProductsData>
+            <FavProvider>
+              <CartProvider>
+                <div className="flex flex-row justify-center w-full">
+                  <Header />
+                </div>
+                {children}
+                <Footer />
+              </CartProvider>
+            </FavProvider>
+          </ProductsData>
+        </Session>
       </body>
     </html>
   );
