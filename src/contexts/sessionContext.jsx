@@ -6,6 +6,10 @@ const SessionContext = createContext();
 const SessionProvider = ({children, initialSession}) => {
   const [session, setSession] = useState(initialSession);
 
+  useEffect(() => {
+    setSession(initialSession);
+  }, [initialSession]);
+
   return (
     <SessionContext.Provider value={{ session }}>
       {children}
