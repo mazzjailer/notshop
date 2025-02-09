@@ -4,12 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
 import { toast, Toaster } from "sonner";
 import { cn } from "@/lib/utils";
+import { useSession } from "@/contexts/sessionContext";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -17,9 +18,31 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
+  const handleSubmit = async () => {
+    await signIn.email({
+    email,
+    password,
+    callbackURL: "/",
+    rememberMe: rememberMe,
+    fetchOptions: {
+      onResponse: () => {
+        setLoading(false);
+      },
+      onRequest: () => {
+        setLoading(true);
+      },
+      onError: (ctx) => {
+        toast.error(ctx.error.message);
+      },
+    },
+    });
+  }
+
+  const { session } = useSession();
+
   return (
     <div className="flex justify-center items-center h-screen">
-      <Card className="md:max-w-md max-w-sm rounded-3xl">
+      {!session ? (<Card className="md:max-w-md max-w-sm rounded-3xl">
         <CardHeader>
           <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
           <CardDescription className="text-xs md:text-sm">
@@ -27,7 +50,12 @@ export default function SignIn() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <form className="grid gap-4" 
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSubmit();
+                  }}
+                }>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -72,25 +100,7 @@ export default function SignIn() {
               type="submit"
               className="w-full bg-[#5A3D25] hover:bg-[#5A3D25] hover:bg-opacity-95"
               disabled={loading}
-              onClick={async () => {
-                await signIn.email({
-                email,
-                password,
-                callbackURL: "/",
-                rememberMe: rememberMe,
-                fetchOptions: {
-                  onResponse: () => {
-                    setLoading(false);
-                  },
-                  onRequest: () => {
-                    setLoading(true);
-                  },
-                  onError: (ctx) => {
-                    toast.error(ctx.error.message);
-                  },
-                },
-                });
-              }}
+              onClick={handleSubmit}
             >
               {loading ? (
                 <Loader2 size={16} className="animate-spin" />
@@ -98,7 +108,7 @@ export default function SignIn() {
                 "Login"
               )}
             </Button>
-          </div>
+          </form>
         </CardContent>
         <CardFooter>
             <div className="flex justify-center w-full border-t py-4">
@@ -106,7 +116,14 @@ export default function SignIn() {
               <Link href="/sign-up" className="ml-2 text-blue-500">Sign up</Link>
             </div>
           </CardFooter>
-      </Card>
+      </Card>) : (<Card>
+        <CardHeader>
+          <CardTitle className="text-xl">
+            You are already logged in!
+          </CardTitle>
+          <Link href='/' className="text-blue-500 hover:underline text-md">Go to home page &gt;</Link>
+        </CardHeader>
+      </Card>)}
     </div>
   );
 }

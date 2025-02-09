@@ -16,6 +16,7 @@ import { signUp } from "@/lib/auth-client";
 import { toast, Toaster } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSession } from "@/contexts/sessionContext";
 
 export default function SignUp() {
 	const [firstName, setFirstName] = useState("");
@@ -26,9 +27,11 @@ export default function SignUp() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 
+	const { session } = useSession();
+
 	return (
 		<div className="flex items-center justify-center h-screen">
-			<Card className="rounded-3xl md:max-w-md max-w-sm">
+			{!session ? (<Card className="rounded-3xl md:max-w-md max-w-sm">
 				<CardHeader>
 					<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
 					<CardDescription className="text-xs md:text-sm">
@@ -140,7 +143,14 @@ export default function SignUp() {
 						<Link href="/sign-in" className="ml-2 text-blue-500">Sign in</Link>
           </div>
 				</CardFooter>
-			</Card>
+			</Card>) : (<Card>
+        <CardHeader>
+          <CardTitle className="text-xl">
+            You are already logged in!
+          </CardTitle>
+          <Link href='/' className="text-blue-500 hover:underline text-md">Go to home page &gt;</Link>
+        </CardHeader>
+      </Card>)}
 		</div>
 	);
 }
