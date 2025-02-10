@@ -1,7 +1,7 @@
 'use client'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSession } from '@/contexts/sessionContext'
 import { useState } from 'react'
 import { Label } from '@radix-ui/react-label'
@@ -30,12 +30,17 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    setName(session?.user?.name);
+    setEmail(session?.user?.email);
+  }, [session]);
+
   return (
     <Card className='rounded-2xl'>
-      <CardContent className='flex flex-col gap-4 py-4'>
+      <CardContent className='flex flex-col gap-4 py-6'>
         <div className='flex flex-col gap-2'>
           <Label className='font-medium'>Change your name:</Label>
-          <div className='flex felx-row gap-1'>
+          <div className='flex felx-row gap-2'>
             <Input className='rounded-xl' value={name} onChange={(e) => {
               setName(e.target.value);
             }} />
@@ -55,6 +60,7 @@ const ProfilePage = () => {
                   },
                   onSuccess: () => {
                     toast.success('Name changed successfully');
+                    router.refresh();
                   }
                 }
             })
@@ -67,7 +73,7 @@ const ProfilePage = () => {
         </div>
         <div className='flex flex-col gap-2'>
           <Label className='font-medium'>Change your email:</Label>
-          <div className='flex felx-row gap-1'>
+          <div className='flex felx-row gap-2'>
             <Input className='rounded-xl' value={email} onChange={(e) => {
               setEmail(e.target.value);
             }} />
@@ -87,6 +93,7 @@ const ProfilePage = () => {
                   },
                   onSuccess: () => {
                     toast.success('Email changed successfully');
+                    router.refresh();
                   }
                 }
             });
@@ -103,7 +110,7 @@ const ProfilePage = () => {
             }} 
           />
           <Dialog>
-            <DialogTrigger className='bg-[#5A3D25] hover:opacity-90 rounded-xl text-white text-sm px-4 py-2 font-medium'>Change your password</DialogTrigger>
+            <DialogTrigger className='bg-[#5A3D25] hover:opacity-90 rounded-xl text-white text-sm py-2 px-2 font-medium w-48 shadow-sm'>Change your password</DialogTrigger>
             <DialogContent className='flex flex-col gap-4 bg-white rounded-3xl'>
               <div className='flex flex-col gap-2'>
                 <Label className='font-medium'>Enter your current password:</Label>
@@ -137,6 +144,7 @@ const ProfilePage = () => {
                       },
                       onSuccess: () => {
                         toast.success('Password changed successfully');
+                        router.refresh();
                       }
                     }
                 });

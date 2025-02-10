@@ -20,7 +20,7 @@ const SignOutButton = ({styles}) => {
       });
     }}>
       <Button className={styles}>
-        <div className='flex flex-row items-center justify-center'><MdLogout className='mr-1' />Sign out</div>
+        <div className='flex flex-row items-center justify-center'><MdLogout className='text-[#5A3D25] mr-1' />Sign out</div>
       </Button>
     </form>
   )
