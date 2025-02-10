@@ -20,7 +20,7 @@ model Product {
   category    String
   images      String[]
   description String?
-  price       Decimal  @default(0)
+  price       Int      @default(0)
   createdAt   DateTime @default(now())
 }
 
@@ -32,6 +32,7 @@ model User {
   image         String?
   createdAt     DateTime
   updatedAt     DateTime
+  favourites    String[]
   sessions      Session[]
   accounts      Account[]
 
