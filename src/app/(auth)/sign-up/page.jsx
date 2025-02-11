@@ -29,6 +29,30 @@ export default function SignUp() {
 
 	const { session } = useSession();
 
+	const handleSignUp = async () => {
+		await signUp.email({
+			email,
+			password,
+			name: `${firstName} ${lastName}`,
+			callbackURL: "/",
+			fetchOptions: {
+				onResponse: () => {
+					setLoading(false);
+				},
+				onRequest: () => {
+					setLoading(true);
+				},
+				onError: (ctx) => {
+					toast(ctx.error.message);
+				},
+				onSuccess: () => {
+					router.push('/');
+					router.refresh();
+				}
+			},
+		});
+	}
+
 	return (
 		<div className="flex items-center justify-center h-screen">
 			{!session ? (<Card className="rounded-3xl md:max-w-md max-w-sm">
@@ -39,7 +63,12 @@ export default function SignUp() {
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<div className="grid gap-4">
+				<form className="grid gap-4" 
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSignUp();
+                  }}
+                }>
 						<div className="grid grid-cols-2 gap-4">
 							<div className="grid gap-2">
 								<Label htmlFor="first-name">First name</Label>
@@ -110,23 +139,7 @@ export default function SignUp() {
 							className="w-full bg-[#5A3D25] hover:bg-[#5A3D25] hover:bg-opacity-95"
 							disabled={loading}
 							onClick={async () => {
-								await signUp.email({
-									email,
-									password,
-									name: `${firstName} ${lastName}`,
-									callbackURL: "/",
-									fetchOptions: {
-										onResponse: () => {
-											setLoading(false);
-										},
-										onRequest: () => {
-											setLoading(true);
-										},
-										onError: (ctx) => {
-											toast(ctx.error.message);
-										},
-									},
-								});
+								handleSignUp();
 							}}
 						>
 							{loading ? (
@@ -135,7 +148,7 @@ export default function SignUp() {
 								"Create an account"
 							)}
 						</Button>
-					</div>
+					</form>
 				</CardContent>
 				<CardFooter>
 					<div className="flex justify-center w-full border-t py-4">
