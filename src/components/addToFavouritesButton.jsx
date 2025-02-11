@@ -12,7 +12,7 @@ const AddToFavouritesButton = (props) => {
 
   useEffect(() => {
     if (!props.product) return;
-    const isProductFav = favItems.some(item => item.id === props.product.id);
+    const isProductFav = favItems.some(item => item === props.product.id);
     setIsFav(isProductFav);
   }, [favItems, props.product])
 
@@ -28,7 +28,7 @@ const AddToFavouritesButton = (props) => {
   return (
     <Button
       size='icon' 
-      onClick={() => handleClick(props.product)} 
+      onClick={() => handleClick(props.product.id)} 
       className='transition-all duration-300 rounded-xl bg-white border-2 border-black hover:bg-gray-100'
     >
       {isFav ? <FaHeart className='text-[#5A3D25]' /> : <FaRegHeart className='text-[#5A3D25]' />}
