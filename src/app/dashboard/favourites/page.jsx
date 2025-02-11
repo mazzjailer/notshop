@@ -22,7 +22,7 @@ const FavouritesPage = () => {
         { favProducts.map((item) => (
           <Card key={item.id} className='rounded-3xl cursor-pointer' onClick={() => router.push(`/products/${item.slug}`)}>
             <div key={item.id} className='flex flex-row p-4 w-full'>
-              <Image src={item.images[0]} width={130} height={130} className='aspect-square object-cover rounded-2xl'/>
+              <Image src={item.images[0]} width={130} height={130} className='aspect-square object-cover rounded-2xl' alt={item.name}/>
               <CardContent className='flex flex-col pl-4 justify-center'>
                 <CardTitle className='text-lg lg:text-xl xl:text-2xl text-wrap'>{item.name}</CardTitle>
                 <CardDescription className='text-sm lg:text-md xl:text-lg pb-1'>${item.price}</CardDescription>

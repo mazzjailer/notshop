@@ -48,7 +48,7 @@ const Home = async () => {
                     src="/images/4.jpg" 
                     width={1000} 
                     height={1000} 
-                    alt="hero" 
+                    alt="Clutches" 
                     className='w-full h-full object-cover rounded-3xl' 
                   />
                   <div className='absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-[85%] bg-white px-3 lg:px-4 py-3 rounded-xl'>
@@ -66,7 +66,7 @@ const Home = async () => {
                     src="/images/7.jpg" 
                     width={1000} 
                     height={1000} 
-                    alt="hero" 
+                    alt="Shoulder bags" 
                     className='w-full h-full object-cover rounded-3xl' 
                   />
                   <div className='absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-[85%] bg-white px-3 lg:px-4 py-3 rounded-xl'>
@@ -84,12 +84,12 @@ const Home = async () => {
                     src="/images/8.jpg" 
                     width={1000} 
                     height={1000} 
-                    alt="hero" 
+                    alt="Crossbody Bags" 
                     className='w-full h-full object-cover rounded-3xl' 
                   />
                   <div className='absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-[85%] bg-white px-3 lg:px-4 py-3 rounded-xl'>
                     <CardTitle className="text-center text-md lg:text-2xl">
-                      Crossbody Bags
+                      Crossbody bags
                     </CardTitle>
                   </div>
                 </CardHeader>
@@ -102,7 +102,7 @@ const Home = async () => {
                     src="/images/5.jpg" 
                     width={1000} 
                     height={1000} 
-                    alt="hero" 
+                    alt="Tote bags" 
                     className='w-full h-full object-cover rounded-3xl' 
                   />
                   <div className='absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-[85%] bg-white px-3 lg:px-4 py-3 rounded-xl'>

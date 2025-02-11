@@ -17,7 +17,7 @@ const IndProductsPage = async ( { params } ) => {
   return (
     <div className='py-[5.4rem] md:py-24 px-4 md:px-32 pb-0 md:pb-0'>
       <div className='flex flex-col md:flex-row pb-6 items-center'>
-        <Image src={product.images[0]} width={500} height={500} sizes="(max-width: 768px) 50vw, 50vw" className='aspect-square object-cover rounded-3xl mb-4' />
+        <Image src={product.images[0]} width={500} height={500} sizes="(max-width: 768px) 50vw, 50vw" className='aspect-square object-cover rounded-3xl mb-4' alt={product.name}/>
         <div className='flex flex-col md:pl-12 w-full'>
           <h1 className='text-3xl md:text-6xl font-bold pb-1 md:pb-3'>{product.name}</h1>
           <h2 className='text-3xl md:text-6xl pb-4 md:pb-6'>${product.price.toString()}</h2>
